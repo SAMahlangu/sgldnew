@@ -8,31 +8,31 @@ export default function LeaderCarousel() {
     {
       name: 'Sarah Johnson',
       role: 'SRC President',
-      image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=500&fit=crop&crop=faces',
+      image: 'https://picsum.photos/400/500?random=30',
       quote: 'Student voices matter. Together, we can create real change on campus.'
     },
     {
       name: 'Marcus Williams',
       role: 'Vice President',
-      image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=500&fit=crop&crop=faces',
+      image: 'https://picsum.photos/400/500?random=31',
       quote: 'Leadership is about listening first and acting with purpose.'
     },
     {
       name: 'Emily Chen',
       role: 'Student Rep',
-      image: 'https://images.unsplash.com/photo-1517457373614-b7152f800fd1?w=400&h=500&fit=crop&crop=faces',
+      image: 'https://picsum.photos/400/500?random=32',
       quote: 'Your concerns are our mission. Let us know what matters to you.'
     },
     {
       name: 'James Okafor',
       role: 'Community Lead',
-      image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=500&fit=crop&crop=faces',
+      image: 'https://picsum.photos/400/500?random=33',
       quote: 'Community is built on trust, transparency, and shared goals.'
     },
     {
       name: 'Lisa Martinez',
       role: 'Operations Lead',
-      image: 'https://images.unsplash.com/photo-1507537362392-8bfc3b3a99d5?w=400&h=500&fit=crop&crop=faces',
+      image: 'https://picsum.photos/400/500?random=34',
       quote: 'Efficient systems, effective support—that\'s how we serve you best.'
     }
   ]

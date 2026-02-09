@@ -1,24 +1,28 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Header from './components/Header'
+import About from './components/About'
 import LeaderCarousel from './components/LeaderCarousel'
 import RoleCard from './components/RoleCard'
 import NewsCard from './components/NewsCard'
 import EventCard from './components/EventCard'
 
 export default function App() {
+  const [currentPage, setCurrentPage] = useState('home')
   return (
     <div className="app">
       <a className="skip-link" href="#main">Skip to content</a>
-      <Header />
+      <Header onNavigate={setCurrentPage} currentPage={currentPage} />
 
-      <main id="main">
+      {currentPage === 'about' ? (
+        <About />
+      ) : (
+        <main id="main">
         <section className="hero container" aria-labelledby="hero-heading">
           <div className="hero-copy">
             <h2 id="hero-heading">Student Governance Hub</h2>
             <p className="lede">Streamline representative activities, raise student concerns, and manage campus governance in one accessible place.</p>
             <div className="cta-group">
-              <button className="btn btn-primary">Login</button>
-              <a href="#how" className="btn btn-ghost">Learn how it works</a>
+              <a href="#how" className="btn btn-primary">Learn how it works</a>
             </div>
           </div>
           <div className="hero-visual" aria-hidden>
@@ -35,28 +39,28 @@ export default function App() {
               desc="Report concerns, vote in polls, and follow case updates." 
               cta="Login as Student"
               hoverInfo="Report concerns, vote in polls, and follow case updates. Submit your ideas and stay informed about campus governance decisions that affect your student experience."
-              image="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=400&h=300&fit=crop"
+              image="https://picsum.photos/400/300?random=1"
             />
             <RoleCard 
               title="SRC Members" 
               desc="Organise meetings, respond to requests, and publish updates." 
               cta="Login as SRC"
               hoverInfo="Organise meetings, respond to requests, and publish updates. Lead student initiatives and coordinate with your peers to drive positive change on campus."
-              image="https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=300&fit=crop"
+              image="https://picsum.photos/400/300?random=2"
             />
             <RoleCard 
               title="Representatives" 
               desc="Review constituency reports and coordinate solutions." 
               cta="Login as Representative"
               hoverInfo="Review constituency reports and coordinate solutions. Bridge the gap between students and administration to ensure concerns are heard and addressed effectively."
-              image="https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=300&fit=crop"
+              image="https://picsum.photos/400/300?random=3"
             />
             <RoleCard 
               title="Administrators" 
               desc="Access reports, approve policies, and manage roles." 
               cta="Login as Admin"
               hoverInfo="Access reports, approve policies, and manage roles. Oversee governance processes and ensure transparency in all campus decision-making."
-              image="https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=300&fit=crop"
+              image="https://picsum.photos/400/300?random=4"
             />
           </div>
         </section>
@@ -82,19 +86,19 @@ export default function App() {
                   title="New Student Leadership Council Elected for 2026"
                   description="TUT community votes in fresh student governance representatives committed to addressing campus concerns and improving student life through transparent decision-making processes."
                   date="8 February 2026"
-                  image="https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=250&fit=crop"
+                  image="https://picsum.photos/400/250?random=10"
                 />
                 <NewsCard 
                   title="Student Governance Forum Launches Mental Health Initiative"
                   description="SGLD introduces comprehensive mental health support program in collaboration with student services, featuring peer support groups and awareness campaigns across all faculties."
                   date="6 February 2026"
-                  image="https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=250&fit=crop"
+                  image="https://picsum.photos/400/250?random=11"
                 />
                 <NewsCard 
                   title="Campus Sustainability Project Gains Student Support"
                   description="Student governance representatives champion green initiatives, with plans to reduce campus carbon footprint and implement recycling programs through collaborative leadership."
                   date="4 February 2026"
-                  image="https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=250&fit=crop"
+                  image="https://picsum.photos/400/250?random=12"
                 />
               </div>
             </div>
@@ -131,18 +135,16 @@ export default function App() {
           </div>
         </section>
 
-      </main>
-
-      <footer className="site-footer">
-        <div className="footer-content">
-          <div className="footer-sections">
-            <div className="footer-section">
-              <h3>Contact</h3>
-              <p>+27 (0)86 110 2421</p>
-              <p>general@tut.ac.za</p>
-              
-              <h4>Ethics Hotline</h4>
-              <p><strong>Toll-Free Number:</strong><br/>0800 006 924</p>
+        <footer className="site-footer">
+          <div className="footer-content">
+            <div className="footer-sections">
+              <div className="footer-section">
+                <h3>Contact</h3>
+                <p>+27 (0)86 110 2421</p>
+                <p>general@tut.ac.za</p>
+                
+                <h4>Ethics Hotline</h4>
+                <p><strong>Toll-Free Number:</strong><br/>0800 006 924</p>
               <p><strong>Email:</strong><br/>reportit@ethicshelpdesk.com</p>
               
               <p><a href="#additional">Additional Info</a></p>
@@ -153,9 +155,7 @@ export default function App() {
               <ul className="quicklinks">
                 <li><a href="#student-portal">Student Portal</a></li>
                 <li><a href="#academic-calendar">Academic Core Calendar</a></li>
-                {/* <li><a href="#staff-email">Staff/Student Emails</a></li>
-                <li><a href="#staff-enabler">Staff iEnabler</a></li>
-                <li><a href="#ombudsman">Ombuds Office</a></li> */}
+                
               </ul>
             </div>
 
@@ -163,9 +163,9 @@ export default function App() {
               <h3>About SGLD</h3>
               <ul className="quicklinks">
                 <li><a href="#annual-reports">Annual Reports</a></li>
-                {/* <li><a href="#paia-manual">PAIA Manual</a></li> */}
+                
                 <li><a href="#vacancies">Vacancies</a></li>
-                {/* <li><a href="#tenders">Tenders</a></li> */}
+                
               </ul>
               
               <h4>Campus Radio Stations</h4>
@@ -198,6 +198,8 @@ export default function App() {
           </div>
         </div>
       </footer>
+        </main>
+      )}
     </div>
   )
 }
