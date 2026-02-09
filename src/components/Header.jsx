@@ -2,27 +2,43 @@ import React, { useState } from 'react'
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false)
+  const [docDropdownOpen, setDocDropdownOpen] = useState(false)
 
   const toggleMenu = () => setMenuOpen(!menuOpen)
   const closeMenu = () => setMenuOpen(false)
+  const toggleDocDropdown = () => setDocDropdownOpen(!docDropdownOpen)
 
-  const handleAboutClick = (e) => {
+  const documents = [
+    { id: 1, name: 'Document 1', path: '/pdfs/sample.pdf' },
+    { id: 2, name: 'Document 2', path: '/pdfs/sample.pdf' },
+    { id: 3, name: 'Document 3', path: '/pdfs/sample.pdf' }
+  ]
+
+  const handleDocumentDownload = (e, docPath, docName) => {
     e.preventDefault()
     const link = document.createElement('a')
-    link.href = '/pdfs/Sip%20Mahl%20CV%20%281%29.pdf'
-    link.download = 'Sip Mahl CV.pdf'
+    link.href = docPath
+    link.download = `${docName}.pdf`
     document.body.appendChild(link)
     link.click()
     document.body.removeChild(link)
-    closeMenu()
+  }
+
+  const handleDocumentPreview = (e, docPath) => {
+    e.preventDefault()
+    // Open PDF in a new tab for preview
+    window.open(docPath, '_blank')
   }
 
   return (
     <header className="site-header">
       <div className="container header-inner">
         <div className="brand">
-          <h1>Student Governance & Leadership Development</h1>
-          <p className="muted">A central, welcoming place for student leadership and campus governance.</p>
+          <img src="/logo.png" alt="SGLD Logo" className="logo" />
+          <div className="brand-text">
+            <h1>Student Governance & Leadership Development</h1>
+            <p className="muted">Student Governance and Leadership Development we aim to Build, Empower and Create Leaders that make the right choices (through extracurricular activities).</p>
+          </div>
         </div>
         <button 
           className="menu-toggle" 
@@ -43,14 +59,45 @@ export default function Header() {
             aria-label="Close menu"
             onClick={toggleMenu}
           >
-            ←
+            ✕
           </button>
           <ul className="nav">
-            <li><button className="link-btn" onClick={handleAboutClick}>About</button></li>
-            <li><a href="#how" onClick={closeMenu}>How it works</a></li>
-            <li><a href="/pdf-library.html" onClick={closeMenu}>Documents</a></li>
+            <li><a href="#about" onClick={closeMenu}>About</a></li>
+            <li className="nav-dropdown">
+              <button 
+                className="nav-link-btn"
+                onClick={toggleDocDropdown}
+                aria-expanded={docDropdownOpen}
+              >
+                Documents
+              </button>
+              {docDropdownOpen && (
+                <div className="dropdown-menu">
+                  {documents.map((doc) => (
+                    <div key={doc.id} className="dropdown-item">
+                      <span className="doc-name">{doc.name}</span>
+                      <div className="doc-actions">
+                        <button 
+                          className="doc-btn preview"
+                          onClick={(e) => handleDocumentPreview(e, doc.path)}
+                          title="Preview PDF"
+                        >
+                          👁 Preview
+                        </button>
+                        <button 
+                          className="doc-btn download"
+                          onClick={(e) => handleDocumentDownload(e, doc.path, doc.name)}
+                          title="Download PDF"
+                        >
+                          ⬇ Download
+                        </button>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </li>
             <li><a href="#contact" onClick={closeMenu}>Contact</a></li>
-            <li><button className="btn" onClick={closeMenu}>Login</button></li>
           </ul>
         </nav>
       </div>
