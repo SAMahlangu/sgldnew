@@ -14,8 +14,8 @@ export default function Header({ onNavigate, currentPage }) {
   const toggleContactModal = () => setContactModalOpen(!contactModalOpen)
 
   const documents = [
-    { id: 1, name: 'Document 1', path: '/pdfs/sample.pdf' },
-    { id: 2, name: 'Document 2', path: '/pdfs/Sip_Mahl_CV.pdf' },
+    { id: 1, name: 'Document 1', path: '/pdfs/Sip_Mahl_CV.pdf' },
+    { id: 2, name: 'Document 2', path: '/pdfs/sample.pdf' },
     { id: 3, name: 'Document 3', path: '/pdfs/sample.pdf' }
   ]
 
