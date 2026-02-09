@@ -37,7 +37,7 @@ export default function Header() {
           <img src="/logo.png" alt="SGLD Logo" className="logo" />
           <div className="brand-text">
             <h1>Student Governance & Leadership Development</h1>
-            <p className="muted">Student Governance and Leadership Development we aim to Build, Empower and Create Leaders that make the right choices (through extracurricular activities).</p>
+            <p className="muted">Building Leaders. Empowering Choices. Shaping the Future </p>
           </div>
         </div>
         <button 
